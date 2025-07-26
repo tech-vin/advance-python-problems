@@ -111,3 +111,27 @@ def quickSort(arr):
 
 testcases = [[5, 2, 1, 2, 7, 18, 21, 8], [8, 7, 5, 9, 11, 5]]
 print("Quick Sort: ", [quickSort(i) for i in testcases])
+
+'''
+Find longest consecutive
+example: [6, 2, 4, 0, 1, 3]
+result: 5
+explanation: [0,1,2,3,4]
+'''
+
+def longestConsecutive(arr):
+    arr_set = set(arr)
+    longest_streak  = 0
+    for item in arr:
+        if item - 1 not in arr_set:
+            current_num = item
+            current_streak = 1
+            while current_num + 1 in arr_set:
+                current_num += 1
+                current_streak += 1
+        longest_streak = max(current_streak, longest_streak)
+    return longest_streak
+
+
+testcases = [[6,2,4,0,1,3], [9, 19, 100, 21, 20]]
+print("Longest Consecutive: ", [longestConsecutive(i) for i in testcases])
