@@ -135,3 +135,25 @@ def longestConsecutive(arr):
 
 testcases = [[6,2,4,0,1,3], [9, 19, 100, 21, 20]]
 print("Longest Consecutive: ", [longestConsecutive(i) for i in testcases])
+
+'''
+Write a function to find the second largest number in a list.
+'''
+def second_largest_num_using_sort(num):
+    num.sort()
+    return num[-2]
+
+def second_largest_num_organic_way(num):
+        if len(num) < 2:
+            return None
+        first, second = float('-inf')
+        for n in num:
+            if n > first:
+                second = first
+                first = n
+            elif first > n > second:
+                second = n
+        return second if second != float('-inf') else None
+
+testcases = [[1, 2, 1, 5, 2, 8], [10, 11, 8, 5]]
+print("Second Largest: ", [second_largest_num_using_sort(x) for x in testcases])
