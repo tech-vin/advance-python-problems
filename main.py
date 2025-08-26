@@ -157,3 +157,29 @@ def second_largest_num_organic_way(num):
 
 testcases = [[1, 2, 1, 5, 2, 8], [10, 11, 8, 5]]
 print("Second Largest: ", [second_largest_num_using_sort(x) for x in testcases])
+
+'''
+Write a program to check if two strings are anagrams.
+'''
+def checkifanagram(string1, string2):
+    return sorted(string1) == sorted(string2)
+
+def checkIfAnagramWithOutBuiltIn(string1, string2):
+    if len(string1) != len(string2):
+        return False
+    freq = {}
+    for char in string1:
+        freq[char] = freq.get(char, 0) + 1
+
+    for char in string2:
+        if char not in freq:
+            return False
+        freq[char] -= 1
+        if freq[char] < 0:
+            return False
+    return True
+
+print("Is anagram:", checkifanagram('silent', 'listen'))
+print("Is anagram:", checkifanagram('silent', 'listet'))
+print("Is anagram:", checkIfAnagramWithOutBuiltIn('silent', 'listen'))
+print("Is anagram:", checkIfAnagramWithOutBuiltIn('silent', 'liste'))
